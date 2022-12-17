@@ -2,6 +2,7 @@ from django.http import Http404, HttpResponse, HttpResponseRedirect, JsonRespons
 from django.shortcuts import render
 import json
 from ..models import Analysis
+from ..serializers import AnalysisDetails
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -11,13 +12,16 @@ def isSubstring(s1, s2):
         return s2.index(s1)
     return -1
 
-@api_view(['GET'])
+@api_view(['POST'])
 def doTextAnalysis(request):
-    key = request.GET.get('key')
-    questionID = request.GET.get("questionID")
-    email = request.GET.get("email")
-    s = request.GET.get("text")
-    timeDuration = request.GET.get("timeDuration")
+    print("got request")
+    received_json_data=json.loads(request.body)
+    key = received_json_data['key']
+    print(key)
+    questionID = received_json_data["questionID"]
+    email = received_json_data["email"]
+    s = received_json_data["text"]
+    timeDuration = received_json_data["timeDuration"]
     fillerWordList = ["Well","um","uh","Hmm","Like","Actually","Basically","Seriously", "Right","mhm","uh","huh"]
     fillerPhraseList =  ["You see","You know","I mean","You know what I mean","At the end of the day","Believe me",
                         "I guess","I suppose","Or something","Okay so"]
@@ -38,11 +42,9 @@ def doTextAnalysis(request):
                 fillerPhrasesInS.append(word)
         analysisDone = Analysis(email=email,questionID=int(questionID),wpm=wpm,fillerWords=json.loads(json.dumps(fillerWordsInS)),fillerPhrases=json.loads(json.dumps(fillerPhrasesInS)))
         analysisDone.save()
-        
-        jsonRes = json.dumps([questionID,wpm,fillerWordsInS,fillerPhrasesInS])
-        jsonRes = json.loads(jsonRes)
-
-        return Response(jsonRes)
+        resultData = Analysis.objects.filter(email=email,questionID=questionID)
+        res = AnalysisDetails(resultData,many=True)
+        return Response(res.data)
 
     else:
 

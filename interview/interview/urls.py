@@ -8,10 +8,10 @@ from interview.views import doTextAnalysis
 from rest_framework import permissions
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("create",create.create),
-    path("authenticate/",authenticate.authenticate),
-    path("doAnalysis/",doAnalysis.doAnalysis),
-    path("doTextAnalysis/",doTextAnalysis.doTextAnalysis),
-    path("getDetails/",getDetails.getDetails),
+    path("api/admin", admin.site.urls),
+    path("api/create",create.create),
+    path("api/authenticate",authenticate.authenticate),
+    path("api/doAnalysis",doAnalysis.doAnalysis),
+    path("api/doTextAnalysis",doTextAnalysis.doTextAnalysis),
+    path("api/getDetails",getDetails.getDetails),
 ]

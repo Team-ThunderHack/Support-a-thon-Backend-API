@@ -7,11 +7,12 @@ from rest_framework import status
 from ..serializers import AnalysisDetails
 import json
 
-@api_view(['GET'])
+@api_view(['POST'])
 def getDetails(request):
-    key = request.GET.get('key')
-    email = request.GET.get("email")
-    questionID = request.GET.get("questionID")
+    received_json_data=json.loads(request.body)
+    key = received_json_data['key']
+    email = received_json_data["email"]
+    questionID = received_json_data["questionID"]
     if(key=='73627'):
         data = Analysis.objects.filter(email=email,questionID=questionID)
         res = AnalysisDetails(data,many=True)
