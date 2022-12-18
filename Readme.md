@@ -1,3 +1,12 @@
+# Setup API at your localhost : 
+  1 )Fork the repo <br/>
+  2) Clone at local host <br/>
+  3) Setup virtual env by `python3 -m venv env`<br/>
+  4) Activate virtual env by `. env/bin/activate`<br/>
+  5) Install all packages in requirements.txt by `pip install -r /path/to/requirements.txt` <br/>
+  6) `cd interview`<br/>
+  7) `python manage.py runserver`
+
 # API Docs:
 
 ## End Points:
