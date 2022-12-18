@@ -11,3 +11,4 @@ class Analysis(models.Model):
     wpm = models.IntegerField(null=True)
     fillerWords = models.CharField(max_length=500,null=True)
     fillerPhrases = models.CharField(max_length=500,null=True)
+    recommendation = models.CharField(max_length=2000,null=True)

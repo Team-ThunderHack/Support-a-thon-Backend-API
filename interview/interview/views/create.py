@@ -7,10 +7,10 @@ from rest_framework import status
 
 @api_view(['POST'])
 def create(request):
-    key = request.query_params.get("key")
-    name = request.query_params.get("name")
-    email = request.query_params.get("email")
-    password = request.query_params.get("password")
+    key = received_json_data['key']
+    name = received_json_data['name']
+    email = received_json_data["email"]
+    password = received_json_data["password"]
     if(key=='73627'):
         user = Users(name=name,email=email,password=password)
         user.save()

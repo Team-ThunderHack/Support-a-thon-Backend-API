@@ -6,11 +6,11 @@ from rest_framework.response import Response
 from rest_framework import status
 import os
 
-@api_view(['GET'])
+@api_view(['POST'])
 def authenticate(request):
-    email = request.GET.get("email")
-    passwordRec = request.GET.get("password")
-    key = request.GET.get("key")
+    email = received_json_data['email']
+    passwordRec = received_json_data['password']
+    key = received_json_data['key']
     correctPassword = Users.objects.get(email=email)
     correctPassword=correctPassword.password
     if(key=='73627'):
