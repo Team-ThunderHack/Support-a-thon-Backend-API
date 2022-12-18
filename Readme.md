@@ -1,8 +1,17 @@
+# Setup API at your localhost : 
+  1 )Fork the repo <br/>
+  2) Clone at local host <br/>
+  3) Setup virtual env by `python3 -m venv env`<br/>
+  4) Activate virtual env by `. env/bin/activate`<br/>
+  5) Install all packages in requirements.txt by `pip install -r /path/to/requirements.txt` <br/>
+  6) `cd interview`<br/>
+  7) `python manage.py runserver`
+
 # API Docs:
 
 ## End Points:
 
-### 1) create/ (GET Method)
+### 1) api/create (POST Method)
   Description : To create a user with the following details and save his/her details in the database.
   
   Parameters : <br />
@@ -18,7 +27,7 @@
   A ) If user is created and entered into DB : `User Created Successfully`<br />
   B) If key is invalid : `Invalid Key`<br />
 
-### 2) authenticate/ (GET Method)
+### 2) api/authenticate (GET Method)
   Description : To check the password entered by the user.
   
   Parameters : <br />
@@ -34,7 +43,7 @@
   B) If password is incorrect : `Incorrect Password`<br />
   C) If key is invalid : `Invalid Key`<br />
   
-  ### 3) doAnalysis/ (GET Method)
+  ### 3) api/doAnalysis (GET Method)
   Description : To check the password entered by the user.
   
   Parameters : <br />
@@ -59,7 +68,7 @@
 <br/>
   B) If key is invalid : `Invalid Key`<br />
   
-  ### 4) getDetails/ (GET Method)
+  ### 4) api/getDetails (GET Method)
   Description : To check the password entered by the user.
   
   Parameters : <br />
