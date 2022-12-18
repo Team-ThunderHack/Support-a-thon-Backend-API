@@ -17,6 +17,7 @@ def isSubstring(s1, s2):
 
 @api_view(['POST'])
 def doTextAnalysis(request):
+    print("request received")
     received_json_data=json.loads(request.body)
     key = received_json_data['key']
     print(key)
